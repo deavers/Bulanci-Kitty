@@ -79,6 +79,3 @@ make clean
 ## Příspěvky
 
 Příspěvky jsou vítány! Forkněte tento repozitář, proveďte změny a pošlete pull request.
-
----
-Answer from Perplexity: pplx.ai/share
