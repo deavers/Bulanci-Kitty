@@ -75,7 +75,3 @@ make clean
    ```
 2. Použijte ovládání popsané v předchozí sekci pro hraní hry.
 3. Cílem je dosáhnout co nejvyššího skóre střelbou na nepřátele.
-
-## Příspěvky
-
-Příspěvky jsou vítány! Forkněte tento repozitář, proveďte změny a pošlete pull request.
