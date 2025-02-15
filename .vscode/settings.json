@@ -1,0 +1,30 @@
+{
+    "files.associations": {
+        "init.h": "c",
+        "sdl.h": "c",
+        "sdl_ttf.h": "c",
+        "common.h": "c",
+        "show_window.h": "c",
+        "game_status.h": "c",
+        "main_menu.h": "c",
+        "character.h": "c",
+        "buttons.h": "c",
+        "stdbool.h": "c",
+        "level.h": "c",
+        "math.h": "c",
+        "bullet.h": "c",
+        "bots.h": "c",
+        "options_menu.h": "c",
+        "collision.h": "c",
+        "player.h": "c",
+        "confirm_save_events.h": "c",
+        "save_results.h": "c",
+        "time.h": "c",
+        "sdl_image.h": "c",
+        "hud.h": "c",
+        "weapons.h": "c",
+        "sdl_mixer.h": "c",
+        "music.h": "c"
+    },
+    "makefile.configureOnOpen": true
+}
