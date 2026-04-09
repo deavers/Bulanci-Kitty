@@ -1,77 +1,95 @@
-# Bulanci
+# Bulanci-Kitty
 
-***Bulanci*** je strategická hra vyvinutá pomocí knihovny SDL2. Hráči ovládají postavu, která se pohybuje po mapě, střílí na nepřátele a sbírá body za úspěšné zásahy. Cílem je dosáhnout co nejvyššího skóre během stanoveného času.
+2D střílečka z pohledu shora napsaná v jazyce **C** s využitím knihovny **SDL2**. Vytvořena jako semestrální projekt na VŠB-TUO.
 
-## Požadavky
+Hráč bojuje na ručně sestavené mapě proti AI botům. Hra obsahuje hlavní nabídku, nastavení, různé zbraně, detekci kolizí, HUD a systém záznamů výsledků.
 
-- **Operační systém:** Linux, macOS nebo Windows
-- **Kompilátor:** GCC
-- **Knihovny:**
-  - SDL2
-  - SDL2_image
-  - SDL2_ttf
-  - SDL2_mixer
-  - Math library (-lm)
-  - AddressSanitizer (volitelně pro ladění)
+***
 
-## Instalace závislostí
+## Technologie
 
-### Pro Ubuntu/Debian
+- **Jazyk:** C
+- **Grafika / vstup / zvuk:** SDL2, SDL2_image, SDL2_mixer, SDL2_ttf
+- **Sestavení:** Makefile + GCC
+- **Platforma:** Linux
 
-Otevřete terminál a spusťte následující příkazy:
+***
 
-```bash
-sudo apt update
-sudo apt install build-essential libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev pkg-config
+## Funkce
+
+- 🎮 Pohyb hráče a střelba
+- 🤖 AI boti se základní logikou (`bots.c`)
+- 💥 Systém střel a detekce kolizí
+- 🗺️ Ručně sestavená mapa s umístěnými objekty
+- 🔫 Více typů zbraní (`weapons.c`)
+- 🎵 Hudba na pozadí a zvukové efekty
+- 📋 Hlavní nabídka, nastavení, žebříček
+- 🏆 Výsledky her ukládány do `game_results.txt`
+
+***
+
+## Struktura projektu
+
+```
+Bulanci-Kitty/
+├── Assets/            # Sprity, dlaždice mapy, zvuky (volné assety z itch.io)
+├── Records/           # Záznamy výsledků
+├── main.c             # Vstupní bod, herní smyčka
+├── player.c/h         # Logika hráče
+├── bots.c/h           # AI botů
+├── bullet.c/h         # Pohyb a životnost střel
+├── collision.c/h      # Detekce kolizí
+├── weapons.c/h        # Typy zbraní a jejich parametry
+├── hud.c/h            # Vykreslení HUD (HP, náboje, skóre)
+├── init.c/h           # Inicializace SDL2 a okna
+├── show_window.c/h    # Vykreslení mapy a objektů
+├── main_menu.c/h      # Hlavní nabídka
+├── options_menu.c/h   # Obrazovka nastavení
+├── records_menu.c/h   # Žebříček výsledků
+├── buttons.c/h        # Logika tlačítek
+├── music.c/h          # Hudba a zvukové efekty
+├── character.c/h      # Sdílená data postav
+├── common.h           # Sdílené konstanty a struktury
+├── game_results.txt   # Trvalé záznamy výsledků
+└── Makefile           # Soubor pro sestavení
 ```
 
-### Pro macOS
+***
+
+## Sestavení a spuštění
+
+### Závislosti
 
 ```bash
-brew update
-brew install sdl2 sdl2_image sdl2_ttf sdl2_mixer pkg-config
+sudo apt install libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev
 ```
 
-## Kompilace hry
-
-Použijte poskytnutý Makefile pro kompilaci hry. Spusťte následující příkazy v adresáři projektu:
+### Sestavení
 
 ```bash
 make
 ```
 
-Pro vyčištění zkompilovaných souborů použijte:
+### Spuštění
+
+```bash
+./Bulanci
+```
+
+### Vyčištění build souborů
 
 ```bash
 make clean
 ```
 
-## Ovládání hry
+***
 
-### První hráč:
+## Assety
 
-- Pohyb: W, A, S, D
-- Střelba: Levý Ctrl
-- Nabíjení: R
-- Výběr zbraně: 1, 2, 3
+Herní assety (sprity postav, dlaždice mapy, objekty) jsou volně dostupné zdroje z [itch.io](https://itch.io/game-assets/free). Rozmístění mapy bylo sestaveno a upraveno ručně přímo v kódu.
 
-### Druhý hráč:
+***
 
-- Pohyb: Šipky
-- Střelba: M
-- Nabíjení: P
-- Výběr zbraně: 8, 9, 0
+## Poznámka
 
-### Obecně:
-
-- **Escape**: V každé situaci vrací do hlavního menu
-- **F1**: Debugovací menu pro kontrolu levelMap
-
-## Jak hrát
-
-1. Spusťte spustitelný soubor hry:
-   ```bash
-   ./Bulanci
-   ```
-2. Použijte ovládání popsané v předchozí sekci pro hraní hry.
-3. Cílem je dosáhnout co nejvyššího skóre střelbou na nepřátele.
+Semestrální projekt — VŠB-TUO. Není určen pro produkční nasazení.
