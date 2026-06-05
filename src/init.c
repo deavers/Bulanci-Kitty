@@ -42,8 +42,7 @@ SDL_Window *CreateWindow()
 {
     SDL_Window *window = SDL_CreateWindow(
         "Bulanci", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1920, 1080,
-        SDL_WINDOW_RESIZABLE | SDL_WINDOW_FULLSCREEN_DESKTOP |
-            SDL_WINDOW_SHOWN);
+        SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
     if (!window)
     {
         printf("Window Loading Error!\n");
