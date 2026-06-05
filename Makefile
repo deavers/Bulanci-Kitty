@@ -1,14 +1,16 @@
-# Makefile
-
 CC = gcc
 
-CFLAGS = -Wall -Wextra -g `sdl2-config --cflags` -fsanitize=address
+CFLAGS = -Wall -Wextra -g `sdl2-config --cflags` -Iinclude -fsanitize=address
 
 LIBS = `sdl2-config --libs` -lSDL2_image -lSDL2_ttf -lSDL2_mixer -lm
 
-SRC = $(wildcard *.c)
+SRC_DIR = src
+OBJ_DIR = build
+INC_DIR = include
 
-OBJ = $(SRC:.c=.o)
+SRC = $(wildcard $(SRC_DIR)/*.c)
+
+OBJ = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC))
 
 EXEC = Bulanci
 
@@ -17,10 +19,13 @@ all: $(EXEC)
 $(EXEC): $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $^ $(LIBS)
 
-%.o: %.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
 clean:
-	rm -f $(OBJ) $(EXEC)
+	rm -rf $(OBJ_DIR) $(EXEC)
 
 .PHONY: all clean

@@ -11,47 +11,36 @@ Hráč bojuje na ručně sestavené mapě proti AI botům. Hra obsahuje hlavní 
 - **Jazyk:** C
 - **Grafika / vstup / zvuk:** SDL2, SDL2_image, SDL2_mixer, SDL2_ttf
 - **Sestavení:** Makefile + GCC
-- **Platforma:** Linux
+- **Platforma:** Linux / WSL
 
 ***
 
 ## Funkce
 
 - 🎮 Pohyb hráče a střelba
-- 🤖 AI boti se základní logikou (`bots.c`)
+- 🤖 AI boti se základní logikou
 - 💥 Systém střel a detekce kolizí
 - 🗺️ Ručně sestavená mapa s umístěnými objekty
-- 🔫 Více typů zbraní (`weapons.c`)
+- 🔫 Více typů zbraní
 - 🎵 Hudba na pozadí a zvukové efekty
 - 📋 Hlavní nabídka, nastavení, žebříček
-- 🏆 Výsledky her ukládány do `game_results.txt`
+- 🏆 Výsledky her ukládány do textového souboru
 
 ***
 
 ## Struktura projektu
 
-```
+```text
 Bulanci-Kitty/
+├── src/               # Zdrojové kódy (.c)
+├── include/           # Hlavičkové soubory (.h)
+├── build/             # Zkompilované objektové soubory (.o)
 ├── Assets/            # Sprity, dlaždice mapy, zvuky (volné assety z itch.io)
 ├── Records/           # Záznamy výsledků
-├── main.c             # Vstupní bod, herní smyčka
-├── player.c/h         # Logika hráče
-├── bots.c/h           # AI botů
-├── bullet.c/h         # Pohyb a životnost střel
-├── collision.c/h      # Detekce kolizí
-├── weapons.c/h        # Typy zbraní a jejich parametry
-├── hud.c/h            # Vykreslení HUD (HP, náboje, skóre)
-├── init.c/h           # Inicializace SDL2 a okna
-├── show_window.c/h    # Vykreslení mapy a objektů
-├── main_menu.c/h      # Hlavní nabídka
-├── options_menu.c/h   # Obrazovka nastavení
-├── records_menu.c/h   # Žebříček výsledků
-├── buttons.c/h        # Logika tlačítek
-├── music.c/h          # Hudba a zvukové efekty
-├── character.c/h      # Sdílená data postav
-├── common.h           # Sdílené konstanty a struktury
-├── game_results.txt   # Trvalé záznamy výsledků
-└── Makefile           # Soubor pro sestavení
+├── Makefile           # Soubor pro sestavení projektu (kompilaci)
+├── setup.sh           # Bash skript pro instalaci závislostí
+├── README.md          # Dokumentace projektu
+└── game_results.txt   # Trvalé záznamy výsledků
 ```
 
 ***
@@ -61,7 +50,15 @@ Bulanci-Kitty/
 ### Závislosti
 
 ```bash
-sudo apt install libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev
+chmod +x setup.sh
+./setup.sh
+```
+
+### Případně je můžete nainstalovat ručně (Debian/Ubuntu/WSL):
+
+```bash
+sudo apt update
+sudo apt install -y build-essential libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev
 ```
 
 ### Sestavení
